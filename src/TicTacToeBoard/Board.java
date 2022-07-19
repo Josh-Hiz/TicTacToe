@@ -29,8 +29,6 @@ public class Board extends JPanel {
     private final int BOARD_WIDTH = 800;
     private final int BOARD_HEIGHT = 600;
 
-    Icon oIcon = new ImageIcon("TicTacToeBoard/assets/Icon-72@2x.png");
-    Icon xIcon = new ImageIcon("TicTacToeBoard/assets/Icon-73@2x.png");
     JFrame board;
 
     JPanel panel;
