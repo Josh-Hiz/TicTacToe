@@ -21,30 +21,32 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.JMenu;
 
-public class Board extends JPanel{
+public class Board extends JPanel {
 
-    private JToggleButton[][] grid = new JToggleButton[3][3];
+    boolean gameRunning = true;
+
+    private JButton[][] grid = new JButton[3][3];
     private final int BOARD_WIDTH = 800;
     private final int BOARD_HEIGHT = 600;
 
-    static Icon oIcon = new ImageIcon("TicTacToeBoard/assets/Icon-72@2x.png");
-    static Icon xIcon = new ImageIcon("TicTacToeBoard/assets/Icon-73@2x.png");
+    Icon oIcon = new ImageIcon("TicTacToeBoard/assets/Icon-72@2x.png");
+    Icon xIcon = new ImageIcon("TicTacToeBoard/assets/Icon-73@2x.png");
     JFrame board;
 
     JPanel panel;
 
-    public Board(){
+    public Board() {
         initBoard();
     }
 
-    private void makePanel(){
+    private void makePanel() {
         panel.setBackground(Color.lightGray);
-        panel.setLayout(new GridLayout(3,3));
+        panel.setLayout(new GridLayout(3, 3));
         setBoard();
         board.add(panel);
     }
 
-    private void initBoard(){
+    private void initBoard() {
 
         board = new JFrame();
         panel = new JPanel();
@@ -61,39 +63,79 @@ public class Board extends JPanel{
 
     }
 
-    private void setBoard(){
+    private void setBoard() {
 
         //Loop through 2D array
-        for(int row = 0; row < grid.length; row++){
-            for(int col = 0; col < grid[row].length; col++){
-                grid[row][col] = new JToggleButton();
-                grid[row][col].setBackground(Color.BLACK);
-                grid[row][col].setForeground(Color.white);
-                grid[row][col].putClientProperty("row", row);
-                grid[row][col].putClientProperty("column",col);
+        for (int row = 0; row < grid.length; row++) {
+            for (int col = 0; col < grid[row].length; col++) {
+                grid[row][col] = new JButton();
+                grid[row][col].setOpaque(true);
+                grid[row][col].setBorderPainted(false);
                 grid[row][col].addActionListener(new ButtonListener());
                 panel.add(grid[row][col]);
             }
         }
+        validate();
     }
 
-    protected class ButtonListener implements ActionListener{
 
-        @Override
-        public void actionPerformed(ActionEvent e){
-            JToggleButton button = (JToggleButton) e.getSource();
 
-            //Just to see if I can set the icon after click
-            if(button.isSelected()){
-                button.setIcon(Board.oIcon);
+    protected class ButtonListener implements ActionListener {
+        int index = 0;
+
+        protected boolean check(int moves){
+            //Columns
+            for(int c = 0; c < 3; c++) {
+                if (grid[c][0] == grid[c][1] && grid[c][0] == grid[c][2]) {
+                    gameRunning = false;
+                    JOptionPane.showMessageDialog(null, "Game Over!");
+                }
             }
 
-            //Test to see if I can get some sort of output in console after each toggle button is clicked
-            //But for some reason I can't change the icons? why?
-            System.out.println("clicked column " + button.getClientProperty("column")
-                    + ", row " + button.getClientProperty("row"));
+            //Verticals
+            for(int c = 0; c < 3; c++) {
+                if (grid[0][c] == grid[1][c] && grid[0][c] == grid[2][c]) {
+                    gameRunning = false;
+                    JOptionPane.showMessageDialog(null, "Game Over!");
+                }
+            }
+
+            //Check diagonals
+            if(grid[0][0] == grid[1][1] && grid[0][0] == grid [2][2]) {
+                gameRunning = false;
+                JOptionPane.showMessageDialog(null, "Game Over!");
+            } else if(grid[0][2] == grid[1][1] && grid[0][2] == grid[2][0]) {
+                gameRunning = false;
+                JOptionPane.showMessageDialog(null, "Game Over!");
+            }
+            //Check draw if game goes to 9 moves
+            if(moves == 9) {
+                gameRunning = false;
+                JOptionPane.showMessageDialog(null, "Draw!");
+            }
+            return gameRunning;
+
         }
 
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int turns = 0;
+            for (int r = 0; r < grid.length; r++) {
+                for (int c = 0; c < grid[r].length; c++) {
+                    while(gameRunning){
+                        if(e.getSource() == grid[r][c]){
+                            if(index % 2 == 0){
+                                grid[r][c].setBackground(Color.orange);
+                            } else {
+                                grid[r][c].setBackground(Color.blue);
+                            }
+                            index++;
+                            turns++;
+                            check(turns);
+                        }
+                    }
+                }
+            }
+        }
     }
-
 }
