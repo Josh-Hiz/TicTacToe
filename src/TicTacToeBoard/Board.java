@@ -1,25 +1,13 @@
 package TicTacToeBoard;
 
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.*;
-import java.awt.event.*;
-import java.awt.EventQueue;
-import java.awt.Graphics2D;
-import java.awt.Graphics;
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import javax.swing.ImageIcon;
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-import javax.swing.Timer;
-import javax.swing.JMenu;
 
 public class Board extends JPanel {
 
@@ -38,6 +26,7 @@ public class Board extends JPanel {
     }
 
     private void makePanel() {
+        panel = new JPanel();
         panel.setBackground(Color.lightGray);
         panel.setLayout(new GridLayout(3, 3));
         setBoard();
@@ -47,7 +36,6 @@ public class Board extends JPanel {
     private void initBoard() {
 
         board = new JFrame();
-        panel = new JPanel();
 
         board.setTitle("JTicTacToe");
         board.setSize(BOARD_WIDTH, BOARD_HEIGHT);
@@ -77,32 +65,30 @@ public class Board extends JPanel {
     }
 
 
-
     protected class ButtonListener implements ActionListener {
-        int index = 0;
 
-        protected boolean check(int moves){
+        private int turns;
+        protected boolean check(int moves) {
             //Columns
-            for(int c = 0; c < 3; c++) {
-                if (grid[c][0] == grid[c][1] && grid[c][0] == grid[c][2]) {
+            for (int c = 0; c < 3; c++) {
+                if (grid[c][0].getBackground() == grid[c][1].getBackground() && grid[c][0].getBackground() == grid[c][2].getBackground()) {
                     gameRunning = false;
                     JOptionPane.showMessageDialog(null, "Game Over!");
                 }
             }
-
             //Verticals
-            for(int c = 0; c < 3; c++) {
-                if (grid[0][c] == grid[1][c] && grid[0][c] == grid[2][c]) {
+            for (int c = 0; c < 3; c++) {
+                if (grid[0][c].getBackground() == grid[1][c].getBackground() && grid[0][c].getBackground() == grid[2][c].getBackground()) {
                     gameRunning = false;
                     JOptionPane.showMessageDialog(null, "Game Over!");
                 }
             }
 
             //Check diagonals
-            if(grid[0][0] == grid[1][1] && grid[0][0] == grid [2][2]) {
+            if (grid[0][0].getBackground() == grid[1][1].getBackground() && grid[0][0].getBackground() == grid[2][2].getBackground()) {
                 gameRunning = false;
                 JOptionPane.showMessageDialog(null, "Game Over!");
-            } else if(grid[0][2] == grid[1][1] && grid[0][2] == grid[2][0]) {
+            } else if (grid[0][2].getBackground() == grid[1][1].getBackground() && grid[0][2].getBackground() == grid[2][0].getBackground()) {
                 gameRunning = false;
                 JOptionPane.showMessageDialog(null, "Game Over!");
             }
@@ -111,29 +97,75 @@ public class Board extends JPanel {
                 gameRunning = false;
                 JOptionPane.showMessageDialog(null, "Draw!");
             }
+
             return gameRunning;
 
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            int turns = 0;
-            for (int r = 0; r < grid.length; r++) {
-                for (int c = 0; c < grid[r].length; c++) {
-                    while(gameRunning){
-                        if(e.getSource() == grid[r][c]){
-                            if(index % 2 == 0){
-                                grid[r][c].setBackground(Color.orange);
-                            } else {
-                                grid[r][c].setBackground(Color.blue);
-                            }
-                            index++;
-                            turns++;
-                            check(turns);
-                        }
+
+                if (e.getSource() == grid[0][0]) {
+                    if (turns % 2 == 0) {
+                        grid[0][0].setBackground(Color.orange);
+                    } else {
+                        grid[0][0].setBackground(Color.blue);
                     }
+                } else if (e.getSource() == grid[0][1]) {
+                    if (turns % 2 == 0) {
+                        grid[0][1].setBackground(Color.orange);
+                    } else {
+                        grid[0][1].setBackground(Color.blue);
+                    }
+                } else if (e.getSource() == grid[0][2]) {
+                    if (turns % 2 == 0) {
+                        grid[0][2].setBackground(Color.orange);
+                    } else {
+                        grid[0][2].setBackground(Color.blue);
+                    }
+                } else if (e.getSource() == grid[1][0]) {
+                    if (turns % 2 == 0) {
+                        grid[1][0].setBackground(Color.orange);
+                    } else {
+                        grid[1][0].setBackground(Color.blue);
+                    }
+                } else if (e.getSource() == grid[1][1]) {
+                    if (turns % 2 == 0) {
+                        grid[1][1].setBackground(Color.orange);
+                    } else {
+                        grid[1][1].setBackground(Color.blue);
+                    }
+                } else if (e.getSource() == grid[1][2]) {
+                    if (turns % 2 == 0) {
+                        grid[1][2].setBackground(Color.orange);
+                    } else {
+                        grid[1][2].setBackground(Color.blue);
+                    }
+                } else if (e.getSource() == grid[2][0]) {
+                    if (turns % 2 == 0) {
+                        grid[2][0].setBackground(Color.orange);
+                    } else {
+                        grid[2][0].setBackground(Color.blue);
+                    }
+                } else if (e.getSource() == grid[2][1]) {
+                    if (turns % 2 == 0) {
+                        grid[2][1].setBackground(Color.orange);
+                    } else {
+                        grid[2][1].setBackground(Color.blue);
+                    }
+                } else if (e.getSource() == grid[1][0]) {
+                    if (turns % 2 == 0) {
+                        grid[2][2].setBackground(Color.orange);
+                    } else {
+                        grid[2][2].setBackground(Color.blue);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid");
                 }
+                System.out.println(turns);
+                turns++;
+                check(turns);
             }
         }
     }
-}
+
