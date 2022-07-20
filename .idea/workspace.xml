@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="771f261c-d09e-4c3f-a823-79ccaba0c8c3" name="Changes" comment="TicTacToe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TicTacToeBoard/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TicTacToeBoard/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TicTacToeBoard/console/TTT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TicTacToeBoard/console/TTT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,8 +50,21 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.TicTacToeBoard.Main">
-    <configuration name="TicTacToeBoard.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TicTacToeBoard.Main" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TicTacToeBoard.Game.Main" />
+      <module name="TicTacToe" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TicTacToeBoard.Game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TTT" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TicTacToeBoard.console.TTT" />
       <module name="TicTacToe" />
       <extension name="coverage">
         <pattern>
@@ -65,8 +76,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TicTacToeBoard.console.TTT" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="TicTacToeBoard.console.TTT" />
+    <configuration name="TicTacToeBoard.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="TicTacToeBoard.Main" />
       <module name="TicTacToe" />
       <extension name="coverage">
         <pattern>
@@ -81,7 +92,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.TicTacToeBoard.Main" />
-        <item itemvalue="Application.TicTacToeBoard.console.TTT" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.TTT" />
       </list>
     </recent_temporary>
   </component>
@@ -122,7 +134,21 @@
       <option name="project" value="LOCAL" />
       <updated>1658192941491</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="TicTacToe">
+      <created>1658196003955</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1658196003955</updated>
+    </task>
+    <task id="LOCAL-00006" summary="TicTacToe">
+      <created>1658196014171</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1658196014171</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
