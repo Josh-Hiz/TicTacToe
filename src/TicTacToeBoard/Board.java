@@ -11,11 +11,9 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel {
 
-    boolean gameRunning = true;
-
     private final JButton[][] grid = new JButton[3][3];
 
-    int turns = 0;
+    protected int turns = 0;
 
     private JFrame board;
 
@@ -78,37 +76,47 @@ public class Board extends JPanel {
             //Rows
             for (int c = 0; c < 3; c++) {
                 if (!defaultColor.equals(grid[c][0].getBackground()) && grid[c][0].getBackground() == grid[c][1].getBackground() && grid[c][0].getBackground() == grid[c][2].getBackground()) {
-                    gameRunning = false;
+                    grid[c][0].setBackground(Color.green);
+                    grid[c][1].setBackground(Color.green);
+                    grid[c][2].setBackground(Color.green);
+
                     JOptionPane.showMessageDialog(null, "Game Over!");
                 }
             }
             //Verticals
             for (int c = 0; c < 3; c++) {
                 if (!defaultColor.equals(grid[0][c].getBackground()) && grid[0][c].getBackground() == grid[1][c].getBackground() && grid[0][c].getBackground() == grid[2][c].getBackground()) {
-                    gameRunning = false;
+                    grid[0][c].setBackground(Color.green);
+                    grid[1][c].setBackground(Color.green);
+                    grid[2][c].setBackground(Color.green);
+
                     JOptionPane.showMessageDialog(null, "Game Over!");
                 }
             }
 
             //Check diagonals
             if (!defaultColor.equals(grid[0][0].getBackground()) && grid[0][0].getBackground() == grid[1][1].getBackground() && grid[0][0].getBackground() == grid[2][2].getBackground()) {
-                gameRunning = false;
+                grid[0][0].setBackground(Color.green);
+                grid[1][1].setBackground(Color.green);
+                grid[2][2].setBackground(Color.green);
+
                 JOptionPane.showMessageDialog(null, "Game Over!");
             }
 
             if (!defaultColor.equals(grid[0][2].getBackground()) && grid[0][2].getBackground() == grid[1][1].getBackground() && grid[0][2].getBackground() == grid[2][0].getBackground()) {
-                gameRunning = false;
+                grid[0][2].setBackground(Color.green);
+                grid[1][1].setBackground(Color.green);
+                grid[2][0].setBackground(Color.green);
+
                 JOptionPane.showMessageDialog(null, "Game Over!");
             }
 
             //Check draw if game goes to 9 moves
             if (moves == 9) {
-                gameRunning = false;
                 JOptionPane.showMessageDialog(null, "Draw!");
             }
 
         }
-
 
         @Override
         public void actionPerformed(ActionEvent e) {
