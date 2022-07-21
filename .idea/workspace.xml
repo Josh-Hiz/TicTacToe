@@ -155,7 +155,28 @@
       <option name="project" value="LOCAL" />
       <updated>1658287699415</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="TicTacToe">
+      <created>1658288189846</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1658288189846</updated>
+    </task>
+    <task id="LOCAL-00009" summary="TicTacToe">
+      <created>1658288366450</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1658288366450</updated>
+    </task>
+    <task id="LOCAL-00010" summary="TicTacToe">
+      <created>1658288383110</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1658288383110</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -171,6 +192,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="README update" />
     <MESSAGE value="TicTacToe" />
     <option name="LAST_COMMIT_MESSAGE" value="TicTacToe" />
   </component>

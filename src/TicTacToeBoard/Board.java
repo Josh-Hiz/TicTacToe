@@ -15,9 +15,11 @@ public class Board extends JPanel {
 
     private final JButton[][] grid = new JButton[3][3];
 
-    JFrame board;
+    int turns = 0;
 
-    JPanel panel;
+    private JFrame board;
+
+    private JPanel panel;
 
     public Board() {
         initBoard();
@@ -69,13 +71,13 @@ public class Board extends JPanel {
 
     protected class ButtonListener implements ActionListener {
 
-        Color defaultColor = new Color(238,238,238);
+        Color defaultColor = new Color(238, 238, 238);
 
 
         protected void check(int moves) {
             //Rows
             for (int c = 0; c < 3; c++) {
-                 if (!defaultColor.equals(grid[c][0].getBackground()) && grid[c][0].getBackground() == grid[c][1].getBackground() && grid[c][0].getBackground() == grid[c][2].getBackground()) {
+                if (!defaultColor.equals(grid[c][0].getBackground()) && grid[c][0].getBackground() == grid[c][1].getBackground() && grid[c][0].getBackground() == grid[c][2].getBackground()) {
                     gameRunning = false;
                     JOptionPane.showMessageDialog(null, "Game Over!");
                 }
@@ -83,23 +85,24 @@ public class Board extends JPanel {
             //Verticals
             for (int c = 0; c < 3; c++) {
                 if (!defaultColor.equals(grid[0][c].getBackground()) && grid[0][c].getBackground() == grid[1][c].getBackground() && grid[0][c].getBackground() == grid[2][c].getBackground()) {
-                        gameRunning = false;
-                        JOptionPane.showMessageDialog(null, "Game Over!");
+                    gameRunning = false;
+                    JOptionPane.showMessageDialog(null, "Game Over!");
                 }
             }
 
             //Check diagonals
             if (!defaultColor.equals(grid[0][0].getBackground()) && grid[0][0].getBackground() == grid[1][1].getBackground() && grid[0][0].getBackground() == grid[2][2].getBackground()) {
                 gameRunning = false;
-                JOptionPane.showMessageDialog(null, "Game Over!");}
+                JOptionPane.showMessageDialog(null, "Game Over!");
+            }
 
-             if (!defaultColor.equals(grid[0][2].getBackground()) && grid[0][2].getBackground() == grid[1][1].getBackground() && grid[0][2].getBackground() == grid[2][0].getBackground()) {
+            if (!defaultColor.equals(grid[0][2].getBackground()) && grid[0][2].getBackground() == grid[1][1].getBackground() && grid[0][2].getBackground() == grid[2][0].getBackground()) {
                 gameRunning = false;
                 JOptionPane.showMessageDialog(null, "Game Over!");
             }
 
-           //Check draw if game goes to 9 moves
-            if(moves == 9) {
+            //Check draw if game goes to 9 moves
+            if (moves == 9) {
                 gameRunning = false;
                 JOptionPane.showMessageDialog(null, "Draw!");
             }
@@ -109,93 +112,24 @@ public class Board extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-             int turns = 0;
-                    if (e.getSource() == grid[0][0]) {
+            for (int col = 0; col < 3; col++) {
+                for (int row = 0; row < 3; row++) {
+                    if (e.getSource() == grid[col][row]) {
                         turns++;
                         if (turns % 2 == 0) {
-                            grid[0][0].setBackground(Color.orange);
+                            grid[col][row].setBackground(Color.orange);
                             check(turns);
                         } else {
-                            grid[0][0].setBackground(Color.blue);
+                            grid[col][row].setBackground(Color.blue);
                             check(turns);
                         }
-                    } else if (e.getSource() == grid[0][1]) {
-                        turns++;
-                        if (turns % 2 == 0) {
-                            grid[0][1].setBackground(Color.orange);
-                            check(turns);
-                        } else {
-                            grid[0][1].setBackground(Color.blue);
-                            check(turns);
-                        }
-                    } else if (e.getSource() == grid[0][2]) {
-                        turns++;
-                        if (turns % 2 == 0) {
-                            grid[0][2].setBackground(Color.orange);
-                            check(turns);
-                        } else {
-                            grid[0][2].setBackground(Color.blue);
-                            check(turns);
-                        }
-                    } else if (e.getSource() == grid[1][0]) {
-                        turns++;
-                        if (turns % 2 == 0) {
-                            grid[1][0].setBackground(Color.orange);
-                            check(turns);
-                        } else {
-                            grid[1][0].setBackground(Color.blue);
-                            check(turns);
-                        }
-                    } else if (e.getSource() == grid[1][1]) {
-                        turns++;
-                        if (turns % 2 == 0) {
-                            grid[1][1].setBackground(Color.orange);
-                            check(turns);
-                        } else {
-                            grid[1][1].setBackground(Color.blue);
-                            check(turns);
-                        }
-                    } else if (e.getSource() == grid[1][2]) {
-                        turns++;
-                        if (turns % 2 == 0) {
-                            grid[1][2].setBackground(Color.orange);
-                            check(turns);
-                        } else {
-                            grid[1][2].setBackground(Color.blue);
-                            check(turns);
-                        }
-                    } else if (e.getSource() == grid[2][0]) {
-                        turns++;
-                        if (turns % 2 == 0) {
-                            grid[2][0].setBackground(Color.orange);
-                            check(turns);
-                        } else {
-                            grid[2][0].setBackground(Color.blue);
-                            check(turns);
-                        }
-                    } else if (e.getSource() == grid[2][1]) {
-                        turns++;
-                        if (turns % 2 == 0) {
-                            grid[2][1].setBackground(Color.orange);
-                            check(turns);
-                        } else {
-                            grid[2][1].setBackground(Color.blue);
-                            check(turns);
-                        }
-                    } else if (e.getSource() == grid[2][2]) {
-                        turns++;
-                        if (turns % 2 == 0) {
-                            grid[2][2].setBackground(Color.orange);
-                            check(turns);
-                        } else {
-                            grid[2][2].setBackground(Color.blue);
-                            check(turns);
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Invalid");
+                        System.out.println(turns);
+                        return;
+                    }
                 }
-                    System.out.println(turns);
             }
+            JOptionPane.showMessageDialog(null, "Invalid");
         }
     }
+}
 
